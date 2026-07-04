@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="tr">
+<meta charset="utf-8">
+<title>Prof. Dr. Mehmet Fatih Özmantar — Matematik Eğitimi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#F7F8F6;
+    --surface:#FFFFFF;
+    --ink:#182430;
+    --muted:#5A6B76;
+    --line:#DDE3E0;
+    --accent:#0F6360;
+    --accent-soft:#0F636014;
+    --copper:#A56A33;
+    --grid-line:#0F63600F;
+    --shadow:0 1px 3px rgba(24,36,48,.06),0 8px 24px rgba(24,36,48,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#0F1518;
+      --surface:#161F23;
+      --ink:#E8ECEA;
+      --muted:#93A3A8;
+      --line:#26343A;
+      --accent:#4FB3AD;
+      --accent-soft:#4FB3AD1C;
+      --copper:#D19B62;
+      --grid-line:#4FB3AD12;
+      --shadow:0 1px 3px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1518;
+    --surface:#161F23;
+    --ink:#E8ECEA;
+    --muted:#93A3A8;
+    --line:#26343A;
+    --accent:#4FB3AD;
+    --accent-soft:#4FB3AD1C;
+    --copper:#D19B62;
+    --grid-line:#4FB3AD12;
+    --shadow:0 1px 3px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.3);
+  }
+  :root[data-theme="light"]{
+    --ground:#F7F8F6;
+    --surface:#FFFFFF;
+    --ink:#182430;
+    --muted:#5A6B76;
+    --line:#DDE3E0;
+    --accent:#0F6360;
+    --accent-soft:#0F636014;
+    --copper:#A56A33;
+    --grid-line:#0F63600F;
+    --shadow:0 1px 3px rgba(24,36,48,.06),0 8px 24px rgba(24,36,48,.05);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Avenir Next','Segoe UI',system-ui,-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+  }
+  .serif{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif}
+  .mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+
+  html[data-lang="en"] .tr{display:none !important}
+  html[data-lang="tr"] .en{display:none !important}
+
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--ground) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-in{
+    max-width:1180px;margin:0 auto;padding:10px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .wordmark{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;font-size:1.02rem;letter-spacing:.01em}
+  .wordmark b{font-weight:700}
+  .lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+  .lang-toggle button{
+    border:0;background:transparent;color:var(--muted);
+    font:inherit;font-size:.78rem;font-weight:600;letter-spacing:.08em;
+    padding:4px 14px;cursor:pointer;
+  }
+  .lang-toggle button[aria-pressed="true"]{background:var(--accent);color:#fff}
+
+  /* ---------- hero band with graph-paper motif ---------- */
+  .hero{
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(color-mix(in srgb,var(--ground) 55%, transparent), var(--ground) 92%),
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 26px),
+      var(--ground);
+  }
+  .hero-in{
+    max-width:1180px;margin:0 auto;padding:64px 24px 52px;
+    display:flex;gap:44px;align-items:center;flex-wrap:wrap;
+  }
+  .portrait{
+    flex:0 0 auto;width:172px;
+    border-radius:6px;overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    background:var(--surface);
+    padding:8px 8px 10px;
+  }
+  .portrait img{display:block;width:100%;border-radius:3px;filter:saturate(.92) contrast(1.02)}
+  .portrait figcaption{
+    text-align:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);padding-top:7px;
+  }
+  .hero-txt{flex:1 1 420px;min-width:280px}
+  .eyebrow{
+    font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--copper);margin:0 0 10px;
+  }
+  h1{
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
+    font-size:clamp(2rem,4.6vw,3.1rem);font-weight:700;
+    line-height:1.08;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em;
+  }
+  .hero-sub{font-size:1.05rem;color:var(--muted);max-width:56ch;margin:0 0 20px}
+  .hero-ids{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .idchip{
+    display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--line);background:var(--surface);
+    border-radius:999px;padding:5px 14px;font-size:.82rem;color:var(--ink);
+  }
+  .idchip .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+  .idchip.orcid .dot{background:#A6CE39}
+
+  /* ---------- layout ---------- */
+  .layout{
+    max-width:1180px;margin:0 auto;padding:48px 24px 72px;
+    display:grid;grid-template-columns:262px minmax(0,1fr);gap:56px;
+  }
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;gap:36px;padding-top:32px}
+    .rail{position:static}
+  }
+  .rail{position:sticky;top:64px;align-self:start;display:flex;flex-direction:column;gap:26px}
+  .rail nav{display:flex;flex-direction:column;gap:2px}
+  .rail nav a{
+    color:var(--muted);font-size:.9rem;padding:7px 12px;border-left:2px solid var(--line);
+    transition:color .15s,border-color .15s,background .15s;
+  }
+  .rail nav a:hover{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft);text-decoration:none}
+  .rail-box{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .rail-box h3{
+    margin:0 0 10px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);
+  }
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:.88rem}
+  .contact-list .lbl{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .contact-list a{word-break:break-all}
+
+  main{min-width:0}
+  section{margin:0 0 60px;scroll-margin-top:76px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:24px}
+  .sec-head h2{
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
+    font-size:1.55rem;font-weight:700;margin:0;letter-spacing:-.005em;text-wrap:balance;
+  }
+  .sec-head .kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+  .prose p{margin:0 0 1em;max-width:68ch}
+  .prose p:last-child{margin-bottom:0}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .stat{background:var(--surface);padding:18px 16px 14px}
+  .stat .n{
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
+    font-size:1.9rem;font-weight:700;color:var(--accent);
+    font-variant-numeric:tabular-nums;line-height:1;
+  }
+  .stat .t{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.35}
+
+  /* research chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+  .chips li{
+    border:1px solid var(--line);background:var(--surface);border-radius:999px;
+    padding:7px 16px;font-size:.88rem;
+  }
+  .chips li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:1px}
+
+  /* publications */
+  .pub-group{margin-bottom:30px}
+  .pub-group h3{
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
+    font-size:1.12rem;margin:0 0 14px;
+  }
+  .pub{
+    display:grid;grid-template-columns:58px minmax(0,1fr);gap:16px;
+    padding:13px 0;border-bottom:1px dashed var(--line);
+  }
+  .pub:last-child{border-bottom:0}
+  .pub .yr{
+    font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:.85rem;color:var(--copper);font-variant-numeric:tabular-nums;padding-top:2px;
+  }
+  .pub .ttl{font-weight:600;line-height:1.45}
+  .pub .src{font-size:.87rem;color:var(--muted);margin-top:2px}
+  .pub .src i{color:var(--ink)}
+  .tag{
+    display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:2px;
+  }
+
+  /* projects */
+  .proj-funder{margin-bottom:26px}
+  .proj-funder h3{
+    display:flex;align-items:center;gap:10px;
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;font-size:1.12rem;margin:0 0 14px;
+  }
+  .funder-badge{
+    font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:.68rem;font-weight:700;letter-spacing:.08em;
+    color:#fff;background:var(--accent);border-radius:4px;padding:3px 8px;
+  }
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+  .proj{
+    border:1px solid var(--line);border-radius:10px;background:var(--surface);
+    padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;
+  }
+  .proj .range{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.78rem;color:var(--copper);font-variant-numeric:tabular-nums}
+  .proj .name{font-weight:600;line-height:1.4}
+  .proj .desc{font-size:.87rem;color:var(--muted)}
+  .proj .role{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+  /* timeline */
+  .timeline{list-style:none;margin:0;padding:0 0 0 4px;border-left:2px solid var(--line)}
+  .timeline li{position:relative;padding:0 0 22px 24px}
+  .timeline li:last-child{padding-bottom:4px}
+  .timeline li::before{
+    content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;
+    background:var(--accent);border:2px solid var(--ground);
+  }
+  .timeline .range{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.78rem;color:var(--copper);font-variant-numeric:tabular-nums}
+  .timeline .what{font-weight:600}
+  .timeline .where{font-size:.88rem;color:var(--muted)}
+  .cv-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px}
+  .cv-cols h3{
+    font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin:0 0 16px;
+  }
+
+  /* teaching + awards */
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:20px;box-shadow:var(--shadow)}
+  .card h3{
+    font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
+    font-size:1.05rem;margin:0 0 10px;
+  }
+  .card ul{margin:0;padding-left:18px;font-size:.9rem;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+  .award{
+    display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);
+    border-left:3px solid var(--copper);border-radius:8px;background:var(--surface);padding:16px 18px;margin-bottom:14px;
+  }
+  .award .yr{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.82rem;color:var(--copper);padding-top:2px;font-variant-numeric:tabular-nums}
+  .award .t{font-weight:600}
+  .award .s{font-size:.87rem;color:var(--muted)}
+
+  /* hikaye kartlari */
+  .story-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  a.story-card{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px;box-shadow:var(--shadow);color:var(--ink);transition:border-color .15s}
+  a.story-card:hover{text-decoration:none;border-color:var(--accent)}
+  .story-card .era{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.78rem;color:var(--copper);font-variant-numeric:tabular-nums}
+  .story-card .t{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;font-weight:700;font-size:1.05rem;line-height:1.3}
+  .story-card .d{font-size:.87rem;color:var(--muted);flex:1}
+  .story-card .go{font-size:.8rem;color:var(--accent);font-weight:600}
+
+  footer{border-top:1px solid var(--line);background:var(--surface)}
+  .foot-in{max-width:1180px;margin:0 auto;padding:26px 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem;color:var(--muted)}
+</style>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="wordmark"><b>M. F. Özmantar</b> <span style="color:var(--muted)">·</span> <span style="color:var(--muted)"><span class="tr">Matematik Eğitimi</span><span class="en">Mathematics Education</span></span></div>
+    <div class="lang-toggle" role="group" aria-label="Dil / Language">
+      <button id="btn-tr" aria-pressed="true" onclick="setLang('tr')">TR</button>
+      <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-in">
+    <figure class="portrait" style="margin:0">
+      <img src="data:image/jpeg;base64,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6LK3gf8AGMZ/35q5v64ZRyvrDnuLtwZYKqyOwqGw1E/mt9Te97k39JTl49ga0sbZLbBLt3uGh9Sux7T/AML9Cv8Af/SV/wCEXoH+LjJLulW4Njtzsawv17CxznWM/sOXnlFllNgdQ/7Pf9Ku4wza8n3W7jPp+p+//wBa/wAMtzpnVq8Gj6xX4wLGW4ANcDaPWsNeHuqqP8zT9ot9Smhzt9FKRU831fNHUOp5meJ25eRZayedhcRV/wCAtrVQSm2hoDBw0AD4BOnKUdUgfcPLVMTAJTN0GvJ5PmkpkSmkJieUPd595SU//9n/7RN8UGhvdG9zaG9wIDMuMAA4QklNBCUAAAAAABAAAAAAAAAAAAAAAAAAAAAAOEJJTQPtAAAAAAAQAEgAAAABAAIASAAAAAEAAjhCSU0EJgAAAAAADgAAAAAAAAAAAAA/gAAAOEJJTQQNAAAAAAAEAAAAHjhCSU0EGQAAAAAABAAAAB44QklNA/MAAAAAAAkAAAAAAAAAAAEAOEJJTQQKAAAAAAABAAA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAANFAAAABgAAAAAAAAAAAAAAqgAAAI4AAAAIAHQAYQByAGEAMAAwADAANAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAjgAAAKoAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAG51bGwAAAACAAAABmJvdW5kc09iamMAAAABAAAAAAAAUmN0MQAAAAQAAAAAVG9wIGxvbmcAAAAAAAAAAExlZnRsb25nAAAAAAAAAABCdG9tbG9uZwAA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OC4yLTMzLCBmcmFtZXdvcmsgMS41Jz4KPHJkZjpSREYgeG1sbnM6cmRmPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjJyB4bWxuczppWD0naHR0cDovL25zLmFkb2JlLmNvbS9pWC8xLjAvJz4KCiA8cmRmOkRlc2NyaXB0aW9uIGFib3V0PSd1dWlkOmY4YWQ2N2Q1LWE0NWItMTFkYS05NmM3LWNiZGFjZDFjZWUzYScKICB4bWxuczp4YXBNTT0naHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyc+CiAgPHhhcE1NOkRvY3VtZW50SUQ+YWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmY4YWQ2N2QzLWE0NWItMTFkYS05NmM3LWNiZGFjZDFjZWUzYTwveGFwTU06RG9jdW1lbnRJRD4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKPC9yZGY6UkRGPgo8L3g6eGFwbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9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" alt="Prof. Dr. Mehmet Fatih Özmantar">
+      <figcaption>Prof. Dr.</figcaption>
+    </figure>
+    <div class="hero-txt">
+      <p class="eyebrow"><span class="tr">Gaziantep Üniversitesi · Eğitim Fakültesi</span><span class="en">Gaziantep University · Faculty of Education</span></p>
+      <h1>Mehmet Fatih Özmantar</h1>
+      <p class="hero-sub">
+        <span class="tr">Matematik ve Fen Bilimleri Eğitimi Bölümü'nde profesör. Matematiksel soyutlama, öğretmen eğitimi ve matematik öğretmen eğitimcileri üzerine araştırmalar yürütüyor. Doktorasını University of Leeds'te tamamladı.</span>
+        <span class="en">Professor in the Department of Mathematics and Science Education. His research focuses on mathematical abstraction, teacher education, and mathematics teacher educators. He received his PhD from the University of Leeds.</span>
+      </p>
+      <div class="hero-ids">
+        <a class="idchip orcid" href="https://orcid.org/0000-0002-7842-1337"><span class="dot"></span>ORCID 0000-0002-7842-1337</a>
+        <a class="idchip" href="mailto:ozmantar@gantep.edu.tr"><span class="dot"></span>ozmantar@gantep.edu.tr</a>
+        <span class="idchip"><span class="dot"></span>+90 (342) 317 27 87</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="rail">
+    <nav aria-label="Bölümler">
+      <a href="#hakkinda"><span class="tr">Hakkında</span><span class="en">About</span></a>
+      <a href="#arastirma"><span class="tr">Araştırma Alanları</span><span class="en">Research Interests</span></a>
+      <a href="#yayinlar"><span class="tr">Seçilmiş Yayınlar</span><span class="en">Selected Publications</span></a>
+      <a href="#projeler"><span class="tr">Projeler</span><span class="en">Projects</span></a>
+      <a href="#ozgecmis"><span class="tr">Özgeçmiş</span><span class="en">Curriculum Vitae</span></a>
+      <a href="#ogretim"><span class="tr">Öğretim &amp; Danışmanlık</span><span class="en">Teaching &amp; Supervision</span></a>
+      <a href="#oduller"><span class="tr">Ödüller &amp; Üyelikler</span><span class="en">Awards &amp; Memberships</span></a>
+      <a href="#hikayeler"><span class="tr">Matematik Hikâyeleri</span><span class="en">Maths Stories</span></a>
+      <a href="#iletisim"><span class="tr">İletişim</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="rail-box">
+      <h3><span class="tr">İletişim</span><span class="en">Contact</span></h3>
+      <ul class="contact-list">
+        <li><span class="lbl">E-posta / Email</span><a href="mailto:ozmantar@gantep.edu.tr">ozmantar@gantep.edu.tr</a></li>
+        <li><span class="lbl">Telefon / Phone</span>+90 (342) 317 27 87</li>
+        <li><span class="lbl">ORCID</span><a href="https://orcid.org/0000-0002-7842-1337">0000-0002-7842-1337</a></li>
+        <li><span class="lbl">Akademik Profil / Profile</span><a href="https://akbis.gantep.edu.tr/detay/?A_ID=5692_prof-dr_mehmet-fatih-ozmantar">GAÜN AKBİS</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <section id="hakkinda">
+      <div class="sec-head"><span class="kicker">01</span><h2><span class="tr">Hakkında</span><span class="en">About</span></h2></div>
+      <div class="prose">
+        <p class="tr">Mehmet Fatih Özmantar, Gaziantep Üniversitesi Eğitim Fakültesi Matematik ve Fen Bilimleri Eğitimi Bölümü'nde profesör olarak görev yapmaktadır. Lisans eğitimini Uludağ Üniversitesi Matematik Bölümü'nde tamamlamış; yüksek lisans ve doktora derecelerini University of Leeds'ten (İngiltere) matematik eğitimi alanında almıştır.</p>
+        <p class="tr">Araştırmaları matematiksel soyutlamanın oluşumu, pedagojik alan bilgisi, öğretmenlerin mesleki gelişimi, matematik öğretiminde teknoloji entegrasyonu, öğretim programı analizi ve son yıllarda yoğunlaşan biçimiyle matematik öğretmen eğitimcileri üzerinedir. Çalışmaları <i>Educational Studies in Mathematics</i>, <i>Teaching and Teacher Education</i> ve <i>Journal of Mathematics Teacher Education</i> gibi alanın önde gelen dergilerinde yayımlanmıştır.</p>
+        <p class="tr">2018–2020 yılları arasında Eğitim Fakültesi dekanlığı görevini yürütmüş; TÜBİTAK ve Avrupa Birliği destekli çok sayıda projede yürütücü ve araştırmacı olarak yer almıştır. Ortağı olduğu e-FLIP projesi 2022 Avrupa Yenilikçi Öğretim Ödülü'ne layık görülmüştür.</p>
+        <p class="en">Mehmet Fatih Özmantar is a professor in the Department of Mathematics and Science Education at Gaziantep University, Türkiye. He completed his undergraduate degree in Mathematics at Uludağ University and earned his MEd and PhD in mathematics education from the University of Leeds, UK.</p>
+        <p class="en">His research addresses the formation of mathematical abstraction, pedagogical content knowledge, teachers' professional development, technology integration in mathematics teaching, curriculum analysis and — as a growing recent strand — mathematics teacher educators. His work has appeared in leading journals of the field including <i>Educational Studies in Mathematics</i>, <i>Teaching and Teacher Education</i> and the <i>Journal of Mathematics Teacher Education</i>.</p>
+        <p class="en">He served as Dean of the Faculty of Education (2018–2020) and has led or contributed to numerous projects funded by TÜBİTAK and the European Union. The e-FLIP project, in which he was a partner, received the 2022 European Innovative Teaching Award.</p>
+      </div>
+      <div class="stats" style="margin-top:28px" aria-label="Akademik göstergeler">
+        <div class="stat"><div class="n">60+</div><div class="t"><span class="tr">Hakemli makale</span><span class="en">Journal articles</span></div></div>
+        <div class="stat"><div class="n">35</div><div class="t"><span class="tr">Kitap &amp; kitap bölümü</span><span class="en">Books &amp; chapters</span></div></div>
+        <div class="stat"><div class="n">79</div><div class="t"><span class="tr">Bildiri</span><span class="en">Conference papers</span></div></div>
+        <div class="stat"><div class="n">24</div><div class="t"><span class="tr">Araştırma projesi</span><span class="en">Research projects</span></div></div>
+        <div class="stat"><div class="n">44</div><div class="t"><span class="tr">Tamamlanan tez danışmanlığı</span><span class="en">Theses supervised</span></div></div>
+      </div>
+    </section>
+
+    <section id="arastirma">
+      <div class="sec-head"><span class="kicker">02</span><h2><span class="tr">Araştırma Alanları</span><span class="en">Research Interests</span></h2></div>
+      <ul class="chips">
+        <li><span class="tr">Matematiksel soyutlama</span><span class="en">Mathematical abstraction</span></li>
+        <li><span class="tr">Matematik öğretmen eğitimcileri</span><span class="en">Mathematics teacher educators</span></li>
+        <li><span class="tr">Pedagojik alan bilgisi</span><span class="en">Pedagogical content knowledge</span></li>
+        <li><span class="tr">Öğretmenlerin mesleki gelişimi</span><span class="en">Teacher professional development</span></li>
+        <li><span class="tr">Sosyokültürel öğrenme teorileri</span><span class="en">Sociocultural theories of learning</span></li>
+        <li><span class="tr">Matematik öğretiminde teknoloji</span><span class="en">Technology in mathematics teaching</span></li>
+        <li><span class="tr">Öğretim programı analizi</span><span class="en">Curriculum analysis</span></li>
+        <li><span class="tr">Etkinlik tasarımı ve niteliği</span><span class="en">Task design and quality</span></li>
+      </ul>
+    </section>
+
+    <section id="yayinlar">
+      <div class="sec-head"><span class="kicker">03</span><h2><span class="tr">Seçilmiş Yayınlar</span><span class="en">Selected Publications</span></h2></div>
+
+      <div class="pub-group">
+        <h3><span class="tr">Uluslararası hakemli makaleler</span><span class="en">International peer-reviewed articles</span></h3>
+        <div class="pub"><div class="yr">2026</div><div><div class="ttl">Thematic and temporal patterns in mathematics teacher educator research: A topic modeling analysis <span class="tag">SSCI</span></div><div class="src"><i>Review of Educational Research</i></div></div></div>
+        <div class="pub"><div class="yr">2026</div><div><div class="ttl">Mathematics teacher educators' noticing across professional backgrounds: Patterns of selectivity and micro-expertise <span class="tag">SSCI</span></div><div class="src"><i>Teaching and Teacher Education</i></div></div></div>
+        <div class="pub"><div class="yr">2026</div><div><div class="ttl">A bibliometric synthesis of research on mathematics teacher educators</div><div class="src"><i>Research in Mathematics Education</i></div></div></div>
+        <div class="pub"><div class="yr">2026</div><div><div class="ttl">Navigating autonomy and strain: A phenomenological study of mathematics teachers of gifted students</div><div class="src"><i>Journal of Advanced Academics</i> (M. Çelik ile / with M. Çelik)</div></div></div>
+        <div class="pub"><div class="yr">2025</div><div><div class="ttl">Mathematics teacher educators' self-identifications and cross-disciplinary research tendencies: Implications for boundary crossing and identity transformations <span class="tag">SSCI</span></div><div class="src"><i>Journal of Mathematics Teacher Education</i></div></div></div>
+        <div class="pub"><div class="yr">2021</div><div><div class="ttl">A Turkish adaptation of a framework for evaluating the mathematical quality of instruction</div><div class="src"><i>Journal of Human Sciences</i>, 18(4)</div></div></div>
+        <div class="pub"><div class="yr">2017</div><div><div class="ttl">Voices and values in shaping the subjectivity of pedagogical content knowledge</div><div class="src"><i>Cogent Education</i>, 4(1)</div></div></div>
+        <div class="pub"><div class="yr">2010</div><div><div class="ttl">Pre-service mathematics teachers' use of multiple representations in technology-rich environments</div><div class="src"><i>Eurasia Journal of Mathematics, Science and Technology Education</i>, 6(1), 19–36</div></div></div>
+        <div class="pub"><div class="yr">2007</div><div><div class="ttl">A dialectical approach to the formation of mathematical abstractions</div><div class="src"><i>Mathematics Education Research Journal</i>, 19(2), 89–112 (J. Monaghan ile / with J. Monaghan)</div></div></div>
+        <div class="pub"><div class="yr">2006</div><div><div class="ttl">Abstraction and consolidation</div><div class="src"><i>Educational Studies in Mathematics</i> (J. Monaghan ile / with J. Monaghan)</div></div></div>
+      </div>
+
+      <div class="pub-group">
+        <h3><span class="tr">Kitaplar ve kitap bölümleri</span><span class="en">Books and book chapters</span></h3>
+        <div class="pub"><div class="yr">2025</div><div><div class="ttl">Disciplinary divides and gendered labor in mathematics teacher education</div><div class="src"><span class="tr">Kitap bölümü, IGI Global (G. Agaç ile)</span><span class="en">Book chapter, IGI Global (with G. Agaç)</span></div></div></div>
+        <div class="pub"><div class="yr">2022</div><div><div class="ttl"><span class="tr">Matematik öğretiminde etkinlik tasarımı ve uygulamaları: Bir değerlendirme çerçevesi</span><span class="en">Task design and applications in mathematics teaching: An evaluation framework</span></div><div class="src">Pegem Akademi (A. Bozkurt, G. Agaç &amp; H. Güzel ile / with A. Bozkurt, G. Agaç &amp; H. Güzel)</div></div></div>
+        <div class="pub"><div class="yr">2008</div><div><div class="ttl">Are mathematical abstractions situated?</div><div class="src"><i>New Directions for Situated Cognition in Mathematics Education</i> (ss. 103–127), Springer (J. Monaghan ile / with J. Monaghan)</div></div></div>
+      </div>
+
+      <p style="font-size:.87rem;color:var(--muted)">
+        <span class="tr">Yayınların tam listesi için: </span><span class="en">For the complete list of publications: </span>
+        <a href="https://orcid.org/0000-0002-7842-1337">ORCID</a> ·
+        <a href="https://akbis.gantep.edu.tr/detay/?A_ID=5692_prof-dr_mehmet-fatih-ozmantar">GAÜN AKBİS</a> ·
+        <a href="https://scholar.google.com/scholar?q=%22Mehmet+Fatih+Ozmantar%22">Google Scholar</a>
+      </p>
+    </section>
+
+    <section id="projeler">
+      <div class="sec-head"><span class="kicker">04</span><h2><span class="tr">Projeler</span><span class="en">Projects</span></h2></div>
+      <p class="prose" style="color:var(--muted);font-size:.92rem;margin-bottom:24px">
+        <span class="tr">Ulusal ve uluslararası 24 araştırma projesinde yürütücü, araştırmacı ve ortak olarak görev almıştır. Seçilmiş projeler:</span>
+        <span class="en">He has served as principal investigator, researcher and partner in 24 national and international research projects. Selected projects:</span>
+      </p>
+
+      <div class="proj-funder">
+        <h3><span class="funder-badge">TÜBİTAK</span><span class="tr">Ulusal projeler</span><span class="en">National projects</span></h3>
+        <div class="proj-grid">
+          <div class="proj">
+            <span class="range">2024 – 2025</span>
+            <span class="name"><span class="tr">Yapay Zekâ ve Bulanık Mantık</span><span class="en">Artificial Intelligence and Fuzzy Logic</span></span>
+            <span class="desc"><span class="tr">Eğitim bağlamında yapay zekâ ve bulanık mantık uygulamaları üzerine TÜBİTAK destekli araştırma projesi.</span><span class="en">TÜBİTAK-funded research on applications of artificial intelligence and fuzzy logic in educational contexts.</span></span>
+          </div>
+          <div class="proj">
+            <span class="range">2020 – 2022</span>
+            <span class="name"><span class="tr">Matematiksel Etkinliklerin Tasarım ve Uygulama Nitelikleri</span><span class="en">Design and Implementation Qualities of Mathematical Tasks</span></span>
+            <span class="desc"><span class="tr">Matematik öğretiminde etkinlik tasarımı ve uygulamasının niteliğini değerlendiren bir çerçevenin geliştirilmesi; çıktıları 2022'de kitaplaştırıldı.</span><span class="en">Development of a framework for evaluating the quality of task design and implementation in mathematics teaching; outcomes published as a book in 2022.</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-funder">
+        <h3><span class="funder-badge">EU · ERASMUS+</span><span class="tr">Avrupa Birliği projeleri</span><span class="en">European Union projects</span></h3>
+        <div class="proj-grid">
+          <div class="proj">
+            <span class="range">2021 – 2023</span>
+            <span class="name">e-FLIP</span>
+            <span class="desc"><span class="tr">Ters yüz öğrenme (flipped learning) odaklı Avrupa ortaklığı. 2022 Avrupa Yenilikçi Öğretim Ödülü sahibi.</span><span class="en">A European partnership on flipped learning. Recipient of the 2022 European Innovative Teaching Award.</span></span>
+            <span class="role"><span class="tr">Ödüllü proje</span><span class="en">Award-winning</span></span>
+          </div>
+          <div class="proj">
+            <span class="range">2021 – 2023</span>
+            <span class="name">Extending the Boundaries in Education</span>
+            <span class="desc"><span class="tr">Eğitimde sınırların genişletilmesine yönelik uluslararası iş birliği projesi.</span><span class="en">International cooperation project on extending the boundaries of education.</span></span>
+          </div>
+          <div class="proj">
+            <span class="range">2017 – 2019</span>
+            <span class="name">WISH</span>
+            <span class="desc"><span class="tr">Avrupa Birliği destekli eğitim odaklı ortaklık projesi.</span><span class="en">EU-funded education-focused partnership project.</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ozgecmis">
+      <div class="sec-head"><span class="kicker">05</span><h2><span class="tr">Özgeçmiş</span><span class="en">Curriculum Vitae</span></h2></div>
+      <div class="cv-cols">
+        <div>
+          <h3><span class="tr">Eğitim</span><span class="en">Education</span></h3>
+          <ul class="timeline">
+            <li><span class="range">2001 – 2005</span><div class="what"><span class="tr">Doktora, Matematik Eğitimi</span><span class="en">PhD, Mathematics Education</span></div><div class="where">University of Leeds, UK</div></li>
+            <li><span class="range">2000 – 2001</span><div class="what"><span class="tr">Yüksek Lisans (MEd)</span><span class="en">MEd</span></div><div class="where">University of Leeds, UK</div></li>
+            <li><span class="range">1994 – 1998</span><div class="what"><span class="tr">Lisans, Matematik</span><span class="en">BSc, Mathematics</span></div><div class="where"><span class="tr">Uludağ Üniversitesi, Fen-Edebiyat Fakültesi</span><span class="en">Uludağ University, Faculty of Arts and Sciences</span></div></li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="tr">Akademik Görevler</span><span class="en">Academic Positions</span></h3>
+          <ul class="timeline">
+            <li><span class="range">2017 – <span class="tr">devam</span><span class="en">present</span></span><div class="what"><span class="tr">Profesör</span><span class="en">Professor</span></div><div class="where"><span class="tr">Gaziantep Üniversitesi, Eğitim Fakültesi</span><span class="en">Gaziantep University, Faculty of Education</span></div></li>
+            <li><span class="range">2012 – 2017</span><div class="what"><span class="tr">Doçent</span><span class="en">Associate Professor</span></div><div class="where"><span class="tr">Gaziantep Üniversitesi</span><span class="en">Gaziantep University</span></div></li>
+            <li><span class="range">2006 – 2012</span><div class="what"><span class="tr">Yardımcı Doçent</span><span class="en">Assistant Professor</span></div><div class="where"><span class="tr">Gaziantep Üniversitesi</span><span class="en">Gaziantep University</span></div></li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="tr">İdari Görevler</span><span class="en">Administrative Roles</span></h3>
+          <ul class="timeline">
+            <li><span class="range">2018 – 2020</span><div class="what"><span class="tr">Dekan</span><span class="en">Dean</span></div><div class="where"><span class="tr">Eğitim Fakültesi, Gaziantep Üniversitesi</span><span class="en">Faculty of Education, Gaziantep University</span></div></li>
+            <li><span class="range">2012 – 2018</span><div class="what"><span class="tr">Enstitü Müdürü</span><span class="en">Institute Director</span></div><div class="where"><span class="tr">Gaziantep Üniversitesi</span><span class="en">Gaziantep University</span></div></li>
+            <li><span class="range">2007 – <span class="tr">devam</span><span class="en">present</span></span><div class="what"><span class="tr">Bölüm / Anabilim Dalı Başkanı</span><span class="en">Department Head</span></div><div class="where"><span class="tr">Gaziantep Üniversitesi</span><span class="en">Gaziantep University</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="ogretim">
+      <div class="sec-head"><span class="kicker">06</span><h2><span class="tr">Öğretim &amp; Danışmanlık</span><span class="en">Teaching &amp; Supervision</span></h2></div>
+      <div class="two-col">
+        <div class="card">
+          <h3><span class="tr">Verdiği Dersler</span><span class="en">Courses Taught</span></h3>
+          <ul>
+            <li><span class="tr"><b>Doktora:</b> Matematik eğitimi ve sosyokültürel teoriler</span><span class="en"><b>Doctoral:</b> Mathematics education and sociocultural theories</span></li>
+            <li><span class="tr"><b>Yüksek lisans:</b> Öğrenme teorileri, matematiksel kavram yanılgıları, araştırma yöntemleri</span><span class="en"><b>Graduate:</b> Learning theories, mathematical misconceptions, research methods</span></li>
+            <li><span class="tr"><b>Lisans:</b> Lineer cebir, analitik geometri, matematik öğretimi</span><span class="en"><b>Undergraduate:</b> Linear algebra, analytic geometry, mathematics pedagogy</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tr">Tez Danışmanlığı</span><span class="en">Thesis Supervision</span></h3>
+          <ul>
+            <li><span class="tr"><b>Doktora:</b> 13 tamamlanan, 1 devam eden</span><span class="en"><b>Doctoral:</b> 13 completed, 1 in progress</span></li>
+            <li><span class="tr"><b>Yüksek lisans:</b> 31 tamamlanan</span><span class="en"><b>Master's:</b> 31 completed</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="oduller">
+      <div class="sec-head"><span class="kicker">07</span><h2><span class="tr">Ödüller &amp; Üyelikler</span><span class="en">Awards &amp; Memberships</span></h2></div>
+      <div class="award">
+        <span class="yr">2022</span>
+        <div>
+          <div class="t"><span class="tr">Avrupa Yenilikçi Öğretim Ödülü</span><span class="en">European Innovative Teaching Award</span></div>
+          <div class="s"><span class="tr">Avrupa Komisyonu — e-FLIP projesi kapsamında</span><span class="en">European Commission — for the e-FLIP project</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><span class="tr">Mesleki Üyelikler</span><span class="en">Professional Memberships</span></h3>
+        <ul>
+          <li>International Group for the Psychology of Mathematics Education (PME)</li>
+          <li>European Society for Research in Mathematics Education (ERME)</li>
+          <li>British Society for Research into Learning Mathematics (BSRLM)</li>
+          <li><span class="tr">Eğitim Araştırmaları Birliği (EAB)</span><span class="en">Educational Research Association (Türkiye)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="hikayeler">
+      <div class="sec-head"><span class="kicker">08</span><h2><span class="tr">Matematik Hikâyeleri</span><span class="en">Maths Stories</span></h2></div>
+      <p class="prose" style="color:var(--muted);font-size:.92rem;margin-bottom:24px">
+        <span class="tr">Tarihî olaylara dayanan gerçek matematik hikâyeleri. Her hikâyenin altında yapay zekâ destekli bir sohbet asistanı ve okuyucu tartışma alanı bulunur.</span>
+        <span class="en">True stories of mathematics rooted in historical events. Each story features an AI chat assistant and a reader discussion area.</span>
+      </p>
+      <div class="story-grid">
+        <a class="story-card" href="hikayeler/konigsberg-kopruleri.html">
+          <span class="era">1736 · Königsberg</span>
+          <span class="t"><span class="tr">Königsberg'in Yedi Köprüsü</span><span class="en">The Seven Bridges of Königsberg</span></span>
+          <span class="d"><span class="tr">Bir pazar yürüyüşü bilmecesi Euler'in elinde çizge kuramına dönüşüyor.</span><span class="en">A Sunday-stroll puzzle becomes graph theory in Euler's hands.</span></span>
+          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
+        </a>
+        <a class="story-card" href="hikayeler/ramanujan-1729.html">
+          <span class="era">1913–1920 · Madras &amp; Cambridge</span>
+          <span class="t"><span class="tr">Ramanujan ve 1729</span><span class="en">Ramanujan and 1729</span></span>
+          <span class="d"><span class="tr">Liman kâtibinin mektubu, Hardy'nin taksisi ve "sıkıcı" olmayan bir sayı.</span><span class="en">A port clerk's letter, Hardy's taxi, and a number that was anything but dull.</span></span>
+          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
+        </a>
+        <a class="story-card" href="hikayeler/cahit-arf.html">
+          <span class="era">1910–1997 · Selanik → Ankara</span>
+          <span class="t"><span class="tr">Cahit Arf: Banknottaki Matematikçi</span><span class="en">Cahit Arf: The Mathematician on the Banknote</span></span>
+          <span class="d"><span class="tr">Savaş göçüyle başlayıp 10 TL'nin arkasındaki formülle süren bir ömür.</span><span class="en">A life that began with wartime exile and lives on in the formula on the 10-lira note.</span></span>
+          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="iletisim">
+      <div class="sec-head"><span class="kicker">09</span><h2><span class="tr">İletişim</span><span class="en">Contact</span></h2></div>
+      <div class="two-col">
+        <div class="card">
+          <h3><span class="tr">Adres</span><span class="en">Address</span></h3>
+          <ul style="list-style:none;padding:0">
+            <li><span class="tr">Gaziantep Üniversitesi, Eğitim Fakültesi</span><span class="en">Gaziantep University, Faculty of Education</span></li>
+            <li><span class="tr">Matematik ve Fen Bilimleri Eğitimi Bölümü</span><span class="en">Department of Mathematics and Science Education</span></li>
+            <li><span class="tr">Şehitkamil / Gaziantep, Türkiye</span><span class="en">Şehitkamil, Gaziantep, Türkiye</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tr">Bağlantılar</span><span class="en">Links</span></h3>
+          <ul style="list-style:none;padding:0">
+            <li><b>E-posta:</b> <a href="mailto:ozmantar@gantep.edu.tr">ozmantar@gantep.edu.tr</a></li>
+            <li><b>Telefon:</b> +90 (342) 317 27 87</li>
+            <li><b>ORCID:</b> <a href="https://orcid.org/0000-0002-7842-1337">orcid.org/0000-0002-7842-1337</a></li>
+            <li><b>AKBİS:</b> <a href="https://akbis.gantep.edu.tr/detay/?A_ID=5692_prof-dr_mehmet-fatih-ozmantar">akbis.gantep.edu.tr</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 Mehmet Fatih Özmantar</span>
+    <span><span class="tr">Son güncelleme: Temmuz 2026 · Kaynaklar: ORCID, GAÜN AKBİS</span><span class="en">Last updated: July 2026 · Sources: ORCID, GAÜN AKBİS</span></span>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.setAttribute('data-lang', l);
+    document.getElementById('btn-tr').setAttribute('aria-pressed', l==='tr' ? 'true' : 'false');
+    document.getElementById('btn-en').setAttribute('aria-pressed', l==='en' ? 'true' : 'false');
+    try{localStorage.setItem('mfo-lang', l);}catch(e){}
+  }
+  (function(){
+    var saved = null;
+    try{saved = localStorage.getItem('mfo-lang');}catch(e){}
+    setLang(saved === 'en' ? 'en' : 'tr');
+  })();
+</script>
+
+</html>
