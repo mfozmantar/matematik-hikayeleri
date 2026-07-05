@@ -17,9 +17,9 @@ window.SITE_CONFIG = {
      değerleri buraya kopyalayın. Boş bırakılırsa yorum alanı
      "henüz etkin değil" notu gösterir. */
   giscus: {
-    repo: "",        // örn: "kullaniciadi/matematik-hikayeleri"
-    repoId: "",      // giscus.app'in verdiği data-repo-id
-    category: "",    // örn: "Hikaye Sohbetleri"
-    categoryId: ""   // giscus.app'in verdiği data-category-id
+    repo: "mfozmantar/matematik-hikayeleri",
+    repoId: "R_kgDOTOPN_g",
+    category: "Announcements",
+    categoryId: "DIC_kwDOTOPN_s4DAjEE"
   }
 };
