@@ -10,7 +10,7 @@ window.SITE_CONFIG = {
      Cloudflare Worker'ınızı kurduktan sonra adresini buraya yazın.
      Örnek: "https://matematik-sohbet.kullaniciadi.workers.dev"
      Boş bırakılırsa sohbet kutusu "henüz etkin değil" notu gösterir. */
-  chatWorkerUrl: "",
+  chatWorkerUrl: "https://matematik-hikaye.mfozmantar.workers.dev",
 
   /* 2) OKUYUCU YORUMLARI (giscus)
      giscus.app adresinde repo bilgilerinizi girince size verilen
