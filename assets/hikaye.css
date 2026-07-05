@@ -1,30 +1,40 @@
 /* Matematik Hikâyeleri — ortak sayfa stili
-   Ana sitenin (index.html) renk ve tipografi sistemiyle aynıdır. */
+   Ana sitenin lacivert-altın kitap estetiğiyle aynı tasarım dili. */
 
 :root{
-  --ground:#F7F8F6;
+  --ground:#F8F6F0;
   --surface:#FFFFFF;
-  --ink:#182430;
-  --muted:#5A6B76;
-  --line:#DDE3E0;
-  --accent:#0F6360;
-  --accent-soft:#0F636014;
-  --copper:#A56A33;
-  --grid-line:#0F63600F;
-  --shadow:0 1px 3px rgba(24,36,48,.06),0 8px 24px rgba(24,36,48,.05);
+  --ink:#232833;
+  --muted:#6B6F76;
+  --line:#E3DED2;
+  --accent:#16304A;
+  --accent-soft:#16304A0F;
+  --gold:#A1802E;
+  --gold-soft:#A1802E1C;
+  --hero-bg:#142B44;
+  --hero-bg2:#0F2236;
+  --hero-ink:#F2EDE0;
+  --hero-muted:#AEBBC9;
+  --shadow:0 1px 2px rgba(28,36,51,.05),0 10px 30px rgba(28,36,51,.06);
+  --display:'Cormorant Garamond',Palatino,'Palatino Linotype',Georgia,serif;
+  --body:'Lora',Georgia,'Times New Roman',serif;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --ground:#0F1518;
-    --surface:#161F23;
-    --ink:#E8ECEA;
-    --muted:#93A3A8;
-    --line:#26343A;
-    --accent:#4FB3AD;
-    --accent-soft:#4FB3AD1C;
-    --copper:#D19B62;
-    --grid-line:#4FB3AD12;
-    --shadow:0 1px 3px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.3);
+    --ground:#10151D;
+    --surface:#171E29;
+    --ink:#E8E4D9;
+    --muted:#99A0AA;
+    --line:#2A3240;
+    --accent:#C8A54F;
+    --accent-soft:#C8A54F14;
+    --gold:#C8A54F;
+    --gold-soft:#C8A54F1F;
+    --hero-bg:#0F2236;
+    --hero-bg2:#0B1A2A;
+    --hero-ink:#F2EDE0;
+    --hero-muted:#9FAEBE;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
   }
 }
 
@@ -33,131 +43,140 @@ body{
   margin:0;
   background:var(--ground);
   color:var(--ink);
-  font-family:'Avenir Next','Segoe UI',system-ui,-apple-system,sans-serif;
+  font-family:var(--body);
   font-size:17px;
-  line-height:1.7;
+  line-height:1.8;
 }
-.serif{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif}
-.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+.serif{font-family:var(--display)}
 a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 .topbar{
   position:sticky;top:0;z-index:50;
-  background:color-mix(in srgb,var(--ground) 88%, transparent);
-  backdrop-filter:blur(10px);
+  background:color-mix(in srgb,var(--ground) 92%, transparent);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
 }
 .topbar-in{
-  max-width:780px;margin:0 auto;padding:10px 24px;
+  max-width:760px;margin:0 auto;padding:12px 28px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.back{font-size:.9rem}
-.wordmark{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;font-size:1rem}
+.back{font-size:.86rem;letter-spacing:.02em}
+.wordmark{font-family:var(--display);font-style:italic;font-size:1.15rem;font-weight:600}
 
+/* ---- hikaye açılışı: koyu lacivert ---- */
 .story-hero{
-  border-bottom:1px solid var(--line);
-  background:
-    linear-gradient(color-mix(in srgb,var(--ground) 55%, transparent), var(--ground) 92%),
-    repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 26px),
-    var(--ground);
+  background:linear-gradient(170deg, var(--hero-bg) 0%, var(--hero-bg2) 100%);
+  border-bottom:3px double var(--gold);
+  color:var(--hero-ink);
 }
-.story-hero-in{max-width:780px;margin:0 auto;padding:56px 24px 40px}
+.story-hero-in{max-width:760px;margin:0 auto;padding:72px 28px 56px}
 .eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--copper);margin:0 0 10px;
+  font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;
+  color:#C9A44C;margin:0 0 16px;
 }
 h1{
-  font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
-  font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;
-  line-height:1.12;margin:0 0 14px;text-wrap:balance;letter-spacing:-.01em;
+  font-family:var(--display);
+  font-size:clamp(2.1rem,5vw,3.1rem);font-weight:600;
+  line-height:1.12;margin:0 0 20px;text-wrap:balance;
 }
-.story-meta{display:flex;flex-wrap:wrap;gap:10px;font-size:.82rem;color:var(--muted)}
+.story-meta{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem;color:var(--hero-muted)}
 .story-meta span{
-  border:1px solid var(--line);background:var(--surface);
-  border-radius:999px;padding:4px 13px;
+  border:1px solid color-mix(in srgb,var(--hero-muted) 35%, transparent);
+  border-radius:2px;padding:5px 14px;background:rgba(255,255,255,.03);
 }
 
-article{max-width:780px;margin:0 auto;padding:40px 24px 8px}
-article p{margin:0 0 1.15em;max-width:68ch}
+/* ---- makale gövdesi ---- */
+article{max-width:760px;margin:0 auto;padding:52px 28px 8px}
+article p{margin:0 0 1.25em;max-width:66ch}
+article > p:first-of-type::first-letter{
+  font-family:var(--display);
+  float:left;font-size:4.4em;line-height:.82;font-weight:600;
+  padding:6px 12px 0 0;color:var(--gold);
+}
 article h2{
-  font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
-  font-size:1.35rem;margin:1.8em 0 .6em;letter-spacing:-.005em;
+  font-family:var(--display);
+  font-size:1.6rem;font-weight:600;margin:1.9em 0 .6em;
 }
 article blockquote{
-  margin:1.4em 0;padding:14px 22px;
-  border-left:3px solid var(--copper);
-  background:var(--surface);border-radius:0 8px 8px 0;
-  font-style:italic;color:var(--muted);
+  margin:1.8em 0;padding:4px 0 4px 26px;
+  border-left:2px solid var(--gold);
+  font-family:var(--display);font-style:italic;
+  font-size:1.28rem;line-height:1.6;color:var(--ink);
 }
 .math-box{
-  border:1px solid var(--line);border-left:3px solid var(--accent);
-  background:var(--surface);border-radius:0 10px 10px 0;
-  padding:18px 22px;margin:1.6em 0;box-shadow:var(--shadow);
+  border:1px solid var(--line);
+  outline:1px solid var(--line);outline-offset:4px;
+  background:var(--surface);
+  padding:26px 30px;margin:2em 0;
 }
 .math-box h3{
-  margin:0 0 8px;font-size:.72rem;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 12px;font-size:.66rem;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
 }
-.math-box p{font-size:.95rem;margin-bottom:.8em}
+.math-box p{font-size:.94rem;margin-bottom:.9em}
 .math-box p:last-child{margin-bottom:0}
 .sources{
-  font-size:.85rem;color:var(--muted);
-  border-top:1px dashed var(--line);margin-top:2.2em;padding-top:16px;
+  font-size:.84rem;color:var(--muted);
+  border-top:1px solid var(--line);margin-top:2.6em;padding-top:20px;
 }
 .sources h3{
-  font-size:.72rem;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--copper);margin:0 0 8px;
+  font-size:.66rem;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 10px;
 }
 .sources ul{margin:0;padding-left:18px}
-.sources li{margin-bottom:4px}
+.sources li{margin-bottom:5px}
 
 /* ---- sohbet ---- */
-.panel{max-width:780px;margin:0 auto;padding:24px 24px 0}
-.panel-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:18px}
+.panel{max-width:760px;margin:0 auto;padding:36px 28px 0}
+.panel-head{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+.panel-head .kicker{font-size:.66rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);order:-1}
+.panel-head .kicker::before{content:"§ "}
 .panel-head h2{
-  font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
-  font-size:1.3rem;margin:0;
+  font-family:var(--display);
+  font-size:1.6rem;font-weight:600;margin:0;
 }
-.panel-head .kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
-.panel-sub{font-size:.88rem;color:var(--muted);margin:0 0 16px;max-width:68ch}
+.panel-sub{font-size:.88rem;color:var(--muted);margin:0 0 18px;max-width:66ch}
 
 .chat-box{
-  border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  border:1px solid var(--line);background:var(--surface);
   box-shadow:var(--shadow);overflow:hidden;
+  border-top:2px solid var(--gold);
 }
 .chat-log{
   max-height:420px;min-height:120px;overflow-y:auto;
-  padding:18px;display:flex;flex-direction:column;gap:12px;
+  padding:22px;display:flex;flex-direction:column;gap:14px;
 }
-.msg{max-width:85%;padding:10px 15px;border-radius:14px;font-size:.94rem;line-height:1.55;white-space:pre-wrap}
-.msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
-.msg.ai{align-self:flex-start;background:var(--accent-soft);border:1px solid var(--line);border-bottom-left-radius:4px}
-.msg.sys{align-self:center;color:var(--muted);font-size:.85rem;background:none;text-align:center}
-.chat-form{display:flex;gap:10px;border-top:1px solid var(--line);padding:12px}
+.msg{max-width:85%;padding:11px 16px;font-size:.92rem;line-height:1.65;white-space:pre-wrap}
+.msg.user{align-self:flex-end;background:var(--accent);color:var(--hero-ink);border-radius:10px 10px 2px 10px}
+.msg.ai{align-self:flex-start;background:var(--ground);border:1px solid var(--line);border-radius:10px 10px 10px 2px}
+.msg.sys{align-self:center;color:var(--muted);font-size:.82rem;font-style:italic;background:none;text-align:center}
+.chat-form{display:flex;gap:10px;border-top:1px solid var(--line);padding:14px}
 .chat-form textarea{
-  flex:1;resize:none;border:1px solid var(--line);border-radius:8px;
+  flex:1;resize:none;border:1px solid var(--line);
   background:var(--ground);color:var(--ink);
-  font:inherit;font-size:.94rem;padding:10px 12px;min-height:44px;max-height:140px;
+  font-family:var(--body);font-size:.92rem;padding:11px 14px;min-height:46px;max-height:140px;
 }
 .chat-form button{
-  border:0;border-radius:8px;background:var(--accent);color:#fff;
-  font:inherit;font-weight:600;font-size:.9rem;padding:0 22px;cursor:pointer;
+  border:1px solid var(--accent);background:var(--accent);color:var(--hero-ink);
+  font-family:var(--body);font-weight:500;font-size:.88rem;letter-spacing:.04em;
+  padding:0 26px;cursor:pointer;transition:background .2s,color .2s;
 }
+.chat-form button:hover:not(:disabled){background:transparent;color:var(--accent)}
 .chat-form button:disabled{opacity:.5;cursor:default}
-.chat-note{font-size:.78rem;color:var(--muted);padding:8px 18px 12px}
+.chat-note{font-size:.76rem;color:var(--muted);padding:10px 22px 14px;font-style:italic}
 
 /* ---- yorumlar ---- */
 #yorumlar{min-height:60px}
 .placeholder{
-  border:1px dashed var(--line);border-radius:10px;background:var(--surface);
-  padding:20px;text-align:center;color:var(--muted);font-size:.9rem;
+  border:1px dashed var(--line);background:var(--surface);
+  padding:22px;text-align:center;color:var(--muted);font-size:.88rem;font-style:italic;
 }
 
-footer{border-top:1px solid var(--line);background:var(--surface);margin-top:56px}
-.foot-in{max-width:780px;margin:0 auto;padding:22px 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem;color:var(--muted)}
+footer{border-top:3px double var(--gold);background:var(--hero-bg);color:var(--hero-muted);margin-top:64px}
+.foot-in{max-width:760px;margin:0 auto;padding:26px 28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.8rem}
+footer a{color:var(--hero-ink)}
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;scroll-behavior:auto !important}
