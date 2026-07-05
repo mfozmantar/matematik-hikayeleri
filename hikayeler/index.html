@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matematik Hikâyeleri — Prof. Dr. Mehmet Fatih Özmantar</title>
+<link rel="stylesheet" href="../assets/hikaye.css">
+<style>
+  /* hikâye vitrini — bu sayfaya özel */
+  .hub-hero-in{max-width:900px;margin:0 auto;padding:72px 24px 56px;text-align:left}
+  .hub-hero-in h1{font-size:clamp(2rem,5vw,3rem)}
+  .hub-sub{font-size:1.08rem;color:var(--muted);max-width:60ch;margin:0 0 8px}
+  .hub-grid{max-width:900px;margin:0 auto;padding:44px 24px 8px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+  a.story-card{
+    display:flex;flex-direction:column;gap:9px;
+    border:1px solid var(--line);border-radius:12px;background:var(--surface);
+    padding:22px;box-shadow:var(--shadow);color:var(--ink);
+    transition:border-color .15s, transform .15s;
+  }
+  a.story-card:hover{text-decoration:none;border-color:var(--accent);transform:translateY(-2px)}
+  .story-card .era{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.78rem;color:var(--copper);font-variant-numeric:tabular-nums}
+  .story-card .t{font-family:Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;font-weight:700;font-size:1.18rem;line-height:1.3}
+  .story-card .d{font-size:.9rem;color:var(--muted);flex:1}
+  .story-card .go{font-size:.82rem;color:var(--accent);font-weight:600}
+  .story-card .feats{display:flex;gap:8px;flex-wrap:wrap}
+  .story-card .feat{
+    font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:2px 8px;
+  }
+  .hub-note{
+    max-width:900px;margin:28px auto 0;padding:0 24px;
+  }
+  .hub-note-in{
+    border:1px solid var(--line);border-left:3px solid var(--copper);
+    border-radius:0 10px 10px 0;background:var(--surface);
+    padding:16px 20px;font-size:.92rem;color:var(--muted);
+  }
+  @media (prefers-reduced-motion: reduce){ a.story-card:hover{transform:none} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="back" href="../index.html">← Prof. Dr. M. F. Özmantar</a>
+    <div class="wordmark">Matematik Hikâyeleri</div>
+  </div>
+</div>
+
+<header class="story-hero">
+  <div class="hub-hero-in">
+    <p class="eyebrow">Tarihten Gerçek Hikâyeler</p>
+    <h1>Matematik Hikâyeleri</h1>
+    <p class="hub-sub">Matematik, formüllerden önce insanların hikâyesidir. Bu sayfadaki her hikâye gerçek tarihî olaylara ve belgelere dayanır: bir şehir bilmecesinden doğan yeni bir matematik dalı, bir liman kâtibinin cesaret mektubu, bir savaş göçüyle başlayan ömür…</p>
+    <p class="hub-sub" style="font-size:.92rem">Her hikâyenin sonunda kaynakça, hikâye hakkında soru sorabileceğiniz bir <b>yapay zekâ sohbet asistanı</b> ve okuyucularla tartışabileceğiniz bir <b>yorum alanı</b> bulunur.</p>
+  </div>
+</header>
+
+<main>
+  <div class="hub-grid">
+    <a class="story-card" href="konigsberg-kopruleri.html">
+      <span class="era">1736 · Königsberg</span>
+      <span class="t">Königsberg'in Yedi Köprüsü</span>
+      <span class="d">Halkın pazar yürüyüşü bilmecesini Euler ciddiye aldı ve çizge kuramı doğdu. Bugün navigasyondan sosyal ağlara her yerde o fikir var.</span>
+      <span class="feats"><span class="feat">Çizge kuramı</span><span class="feat">Euler</span></span>
+      <span class="go">Hikâyeyi oku →</span>
+    </a>
+    <a class="story-card" href="ramanujan-1729.html">
+      <span class="era">1913–1920 · Madras &amp; Cambridge</span>
+      <span class="t">Ramanujan ve 1729</span>
+      <span class="d">Diplomasız bir liman kâtibi Cambridge'in en büyük matematikçisine mektup yazdı. Hikâye, "sıkıcı" bir taksi numarasıyla ölümsüzleşti.</span>
+      <span class="feats"><span class="feat">Sayılar kuramı</span><span class="feat">Hardy</span></span>
+      <span class="go">Hikâyeyi oku →</span>
+    </a>
+    <a class="story-card" href="cahit-arf.html">
+      <span class="era">1910–1997 · Selanik → Ankara</span>
+      <span class="t">Cahit Arf: Banknottaki Matematikçi</span>
+      <span class="d">Balkan Savaşı'nda göçle başlayan bir ömür, dünya literatürüne "Arf değişmezi"ni ve 10 TL'nin arkasındaki formülü bıraktı.</span>
+      <span class="feats"><span class="feat">Cebir</span><span class="feat">Türk matematiği</span></span>
+      <span class="go">Hikâyeyi oku →</span>
+    </a>
+  </div>
+
+  <div class="hub-note">
+    <div class="hub-note-in">
+      📚 Bu koleksiyon büyümeye devam edecek. Yeni hikâye önerileriniz varsa hikâyelerin altındaki yorum alanından paylaşabilir veya <a href="mailto:ozmantar@gantep.edu.tr">e-posta</a> ile iletebilirsiniz.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 Mehmet Fatih Özmantar — Matematik Hikâyeleri</span>
+    <a href="../index.html">Akademik sayfa</a>
+  </div>
+</footer>
+
+</body>
+</html>

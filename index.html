@@ -275,6 +275,22 @@
   .award .t{font-weight:600}
   .award .s{font-size:.87rem;color:var(--muted)}
 
+  /* hikaye tanitim bandi */
+  .story-banner{border-bottom:1px solid var(--line);background:var(--accent-soft)}
+  .story-banner-in{
+    max-width:1180px;margin:0 auto;padding:28px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;
+  }
+  .story-banner-txt h2{font-size:1.45rem;margin:0 0 8px;letter-spacing:-.005em}
+  .story-banner-txt p{margin:0;color:var(--muted);font-size:.94rem;max-width:64ch}
+  .story-banner-btn{
+    flex:0 0 auto;display:inline-block;
+    background:var(--accent);color:#fff;font-weight:600;font-size:.95rem;
+    border-radius:8px;padding:12px 26px;box-shadow:var(--shadow);
+    transition:opacity .15s;
+  }
+  .story-banner-btn:hover{opacity:.9;text-decoration:none}
+
   /* hikaye kartlari */
   .story-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
   a.story-card{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px;box-shadow:var(--shadow);color:var(--ink);transition:border-color .15s}
@@ -320,6 +336,17 @@
   </div>
 </header>
 
+<div class="story-banner">
+  <div class="story-banner-in">
+    <div class="story-banner-txt">
+      <p class="eyebrow" style="margin-bottom:6px"><span class="tr">Yeni · Büyüyen Koleksiyon</span><span class="en">New · Growing Collection</span></p>
+      <h2 class="serif"><span class="tr">Matematik Hikâyeleri</span><span class="en">Maths Stories</span></h2>
+      <p><span class="tr">Tarihî olaylara dayanan gerçek matematik hikâyeleri: Euler'in yedi köprüsü, Ramanujan'ın 1729'u, Cahit Arf'ın banknota uzanan ömrü… Her hikâyede yapay zekâ sohbet asistanı ve okuyucu tartışması.</span><span class="en">True stories of mathematics rooted in history: Euler's seven bridges, Ramanujan's 1729, Cahit Arf's journey to the banknote… Each with an AI chat assistant and reader discussion.</span></p>
+    </div>
+    <a class="story-banner-btn" href="hikayeler/index.html"><span class="tr">Hikâyeleri keşfet →</span><span class="en">Explore the stories →</span></a>
+  </div>
+</div>
+
 <div class="layout">
   <aside class="rail">
     <nav aria-label="Bölümler">
@@ -330,7 +357,7 @@
       <a href="#ozgecmis"><span class="tr">Özgeçmiş</span><span class="en">Curriculum Vitae</span></a>
       <a href="#ogretim"><span class="tr">Öğretim &amp; Danışmanlık</span><span class="en">Teaching &amp; Supervision</span></a>
       <a href="#oduller"><span class="tr">Ödüller &amp; Üyelikler</span><span class="en">Awards &amp; Memberships</span></a>
-      <a href="#hikayeler"><span class="tr">Matematik Hikâyeleri</span><span class="en">Maths Stories</span></a>
+      <a href="hikayeler/index.html" style="border-left-color:var(--copper);color:var(--copper);font-weight:600"><span class="tr">Matematik Hikâyeleri ↗</span><span class="en">Maths Stories ↗</span></a>
       <a href="#iletisim"><span class="tr">İletişim</span><span class="en">Contact</span></a>
     </nav>
     <div class="rail-box">
@@ -527,36 +554,8 @@
       </div>
     </section>
 
-    <section id="hikayeler">
-      <div class="sec-head"><span class="kicker">08</span><h2><span class="tr">Matematik Hikâyeleri</span><span class="en">Maths Stories</span></h2></div>
-      <p class="prose" style="color:var(--muted);font-size:.92rem;margin-bottom:24px">
-        <span class="tr">Tarihî olaylara dayanan gerçek matematik hikâyeleri. Her hikâyenin altında yapay zekâ destekli bir sohbet asistanı ve okuyucu tartışma alanı bulunur.</span>
-        <span class="en">True stories of mathematics rooted in historical events. Each story features an AI chat assistant and a reader discussion area.</span>
-      </p>
-      <div class="story-grid">
-        <a class="story-card" href="hikayeler/konigsberg-kopruleri.html">
-          <span class="era">1736 · Königsberg</span>
-          <span class="t"><span class="tr">Königsberg'in Yedi Köprüsü</span><span class="en">The Seven Bridges of Königsberg</span></span>
-          <span class="d"><span class="tr">Bir pazar yürüyüşü bilmecesi Euler'in elinde çizge kuramına dönüşüyor.</span><span class="en">A Sunday-stroll puzzle becomes graph theory in Euler's hands.</span></span>
-          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
-        </a>
-        <a class="story-card" href="hikayeler/ramanujan-1729.html">
-          <span class="era">1913–1920 · Madras &amp; Cambridge</span>
-          <span class="t"><span class="tr">Ramanujan ve 1729</span><span class="en">Ramanujan and 1729</span></span>
-          <span class="d"><span class="tr">Liman kâtibinin mektubu, Hardy'nin taksisi ve "sıkıcı" olmayan bir sayı.</span><span class="en">A port clerk's letter, Hardy's taxi, and a number that was anything but dull.</span></span>
-          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
-        </a>
-        <a class="story-card" href="hikayeler/cahit-arf.html">
-          <span class="era">1910–1997 · Selanik → Ankara</span>
-          <span class="t"><span class="tr">Cahit Arf: Banknottaki Matematikçi</span><span class="en">Cahit Arf: The Mathematician on the Banknote</span></span>
-          <span class="d"><span class="tr">Savaş göçüyle başlayıp 10 TL'nin arkasındaki formülle süren bir ömür.</span><span class="en">A life that began with wartime exile and lives on in the formula on the 10-lira note.</span></span>
-          <span class="go"><span class="tr">Hikâyeyi oku →</span><span class="en">Read the story →</span></span>
-        </a>
-      </div>
-    </section>
-
     <section id="iletisim">
-      <div class="sec-head"><span class="kicker">09</span><h2><span class="tr">İletişim</span><span class="en">Contact</span></h2></div>
+      <div class="sec-head"><span class="kicker">08</span><h2><span class="tr">İletişim</span><span class="en">Contact</span></h2></div>
       <div class="two-col">
         <div class="card">
           <h3><span class="tr">Adres</span><span class="en">Address</span></h3>
